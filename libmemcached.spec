@@ -1,12 +1,12 @@
 Summary:	memcached client library
 Summary(pl.UTF-8):	blblioteka kliencka memcached
 Name:		libmemcached
-Version:	0.26
+Version:	0.28
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://download.tangent.org/%{name}-%{version}.tar.gz
-# Source0-md5:	a53eaa92785b7835f2a2b784e9805748
+# Source0-md5:	7224e49fd4b0606f35b149ebb8c34e08
 URL:		http://tangent.org/553/default.html
 BuildRequires:	autoconf
 BuildRequires:	automake
