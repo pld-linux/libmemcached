@@ -1,12 +1,12 @@
 Summary:	memcached client library
 Summary(pl.UTF-8):	blblioteka kliencka memcached
 Name:		libmemcached
-Version:	0.30
+Version:	0.32
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://download.tangent.org/%{name}-%{version}.tar.gz
-# Source0-md5:	a67c5a9062325ff4a09db56e2426e104
+# Source0-md5:	2f06059803737b6bf6135edfc86db4b3
 URL:		http://tangent.org/553/default.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -56,7 +56,7 @@ Statyczna biblioteka memcached.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -81,6 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib*.so.*
 %{_mandir}/man1/*.1*
 
 %files devel
