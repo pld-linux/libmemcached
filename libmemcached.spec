@@ -2,7 +2,7 @@ Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
 Version:	0.35
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://download.tangent.org/%{name}-%{version}.tar.gz
@@ -79,17 +79,33 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/lib*.so.*
-%{_mandir}/man1/*.1*
+%attr(755,root,root) %{_bindir}/memcapable
+%attr(755,root,root) %{_bindir}/memcat
+%attr(755,root,root) %{_bindir}/memcp
+%attr(755,root,root) %{_bindir}/memdump
+%attr(755,root,root) %{_bindir}/memerror
+%attr(755,root,root) %{_bindir}/memflush
+%attr(755,root,root) %{_bindir}/memrm
+%attr(755,root,root) %{_bindir}/memslap
+%attr(755,root,root) %{_bindir}/memstat
+%attr(755,root,root) %{_libdir}/libmemcached.so.*.*.*
+%attr(755,root,root) %{_libdir}/libmemcachedprotocol.so.*.*.*
+%attr(755,root,root) %{_libdir}/libmemcachedutil.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmemcached.so.?
+%attr(755,root,root) %ghost %{_libdir}/libmemcachedprotocol.so.?
+%attr(755,root,root) %ghost %{_libdir}/libmemcachedutil.so.?
+%{_mandir}/man1/mem*.1*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%{_libdir}/libmemcached.so
+%{_libdir}/libmemcachedprotocol.so
+%{_libdir}/libmemcachedutil.so
+%{_libdir}/libmemcached.la
+%{_libdir}/libmemcachedprotocol.la
+%{_libdir}/libmemcachedutil.la
 %{_includedir}/libmemcached
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libmemcached.pc
 %{_mandir}/man3/*.3*
 
 %files static
