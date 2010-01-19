@@ -1,3 +1,7 @@
+#
+# Conditional build
+%bcond_without  static_libs	# don't build static library
+#
 Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
@@ -61,6 +65,7 @@ Statyczna biblioteka memcached.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{?with_static_libs:--enable-static} \
 	--with-memcached=no # disable memcached detection, we're not doing tests
 %{__make}
 
@@ -108,6 +113,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libmemcached.pc
 %{_mandir}/man3/*.3*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.la
+%{_libdir}/lib*.a
+%endif
