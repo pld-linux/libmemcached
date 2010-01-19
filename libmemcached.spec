@@ -14,6 +14,7 @@ Source0:	http://download.tangent.org/%{name}-%{version}.tar.gz
 URL:		http://tangent.org/553/default.html
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libevent-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	perl-tools-pod
@@ -93,9 +94,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/memrm
 %attr(755,root,root) %{_bindir}/memslap
 %attr(755,root,root) %{_bindir}/memstat
+%attr(755,root,root) %{_libdir}/libhashkit.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcached.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedprotocol.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedutil.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libhashkit.so.?
 %attr(755,root,root) %ghost %{_libdir}/libmemcached.so.?
 %attr(755,root,root) %ghost %{_libdir}/libmemcachedprotocol.so.?
 %attr(755,root,root) %ghost %{_libdir}/libmemcachedutil.so.?
@@ -103,12 +106,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libmemcached.so
-%{_libdir}/libmemcachedprotocol.so
-%{_libdir}/libmemcachedutil.so
+%attr(755,root,root) %{_libdir}/libhashkit.so
+%attr(755,root,root) %{_libdir}/libmemcached.so
+%attr(755,root,root) %{_libdir}/libmemcachedprotocol.so
+%attr(755,root,root) %{_libdir}/libmemcachedutil.so
+%{_libdir}/libhashkit.la
 %{_libdir}/libmemcached.la
 %{_libdir}/libmemcachedprotocol.la
 %{_libdir}/libmemcachedutil.la
+%{_includedir}/libhashkit
 %{_includedir}/libmemcached
 %{_pkgconfigdir}/libmemcached.pc
 %{_mandir}/man3/*.3*
@@ -116,5 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libhashkit.a
+%{_libdir}/libmemcached.a
+%{_libdir}/libmemcachedprotocol.a
+%{_libdir}/libmemcachedutil.a
 %endif
