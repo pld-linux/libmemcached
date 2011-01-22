@@ -14,6 +14,7 @@ Source0:	http://download.tangent.org/%{name}-%{version}.tar.gz
 URL:		http://tangent.org/553/default.html
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	cyrus-sasl-devel
 BuildRequires:	libevent-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
