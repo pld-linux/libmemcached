@@ -38,6 +38,7 @@ Summary:	Header files for memcached library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki memcached
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	cyrus-sasl-devel
 
 %description devel
 Header files for memcached library.
