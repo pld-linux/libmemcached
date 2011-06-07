@@ -5,12 +5,12 @@
 Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
-Version:	0.48
+Version:	0.49
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://download.tangent.org/%{name}-%{version}.tar.gz
-# Source0-md5:	e00ae51492a1f9dcbb6cfba50dc54758
+Source0:	http://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	95f2e182192934c0dd043eaecd8caa20
 URL:		http://libmemcached.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -70,6 +70,7 @@ Statyczna biblioteka memcached.
 %configure \
 	LIBS="-lrt -lsasl" \
 	%{?with_static_libs:--enable-static} \
+	--disable-silent-rules \
 	--with-memcached=no # disable memcached detection, we're not doing tests
 %{__make}
 
@@ -88,12 +89,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
+%attr(755,root,root) %{_bindir}/memaslap
 %attr(755,root,root) %{_bindir}/memcapable
 %attr(755,root,root) %{_bindir}/memcat
 %attr(755,root,root) %{_bindir}/memcp
 %attr(755,root,root) %{_bindir}/memdump
 %attr(755,root,root) %{_bindir}/memerror
 %attr(755,root,root) %{_bindir}/memflush
+%attr(755,root,root) %{_bindir}/memparse
 %attr(755,root,root) %{_bindir}/memrm
 %attr(755,root,root) %{_bindir}/memslap
 %attr(755,root,root) %{_bindir}/memstat
