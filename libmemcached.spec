@@ -68,7 +68,7 @@ Statyczna biblioteka memcached.
 %{__autoheader}
 %{__automake}
 %configure \
-	LIBS="-lrt -lsasl" \
+	LIBS="-lrt -lsasl -lpthread" \
 	%{?with_static_libs:--enable-static} \
 	--disable-silent-rules \
 	--with-memcached=no # disable memcached detection, we're not doing tests
@@ -89,7 +89,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/memaslap
 %attr(755,root,root) %{_bindir}/memcapable
 %attr(755,root,root) %{_bindir}/memcat
 %attr(755,root,root) %{_bindir}/memcp
@@ -97,6 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/memerror
 %attr(755,root,root) %{_bindir}/memflush
 %attr(755,root,root) %{_bindir}/memparse
+%attr(755,root,root) %{_bindir}/memping
 %attr(755,root,root) %{_bindir}/memrm
 %attr(755,root,root) %{_bindir}/memslap
 %attr(755,root,root) %{_bindir}/memstat
