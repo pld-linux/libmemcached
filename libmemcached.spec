@@ -1,16 +1,19 @@
 #
+# TODO:
+# m4 macros from pandora-build (http://code.launchpad.net/pandora-build)
+#
 # Conditional build
 %bcond_without  static_libs	# don't build static library
 #
 Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
-Version:	0.52
+Version:	1.0.4
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	c3a735c6db51de5ce457565179fc40f2
+# Source0-md5:	6eded403ce736f6ac3c42c8f54dc88ae
 URL:		http://libmemcached.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -94,12 +97,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/memcp
 %attr(755,root,root) %{_bindir}/memdump
 %attr(755,root,root) %{_bindir}/memerror
+%attr(755,root,root) %{_bindir}/memexist
 %attr(755,root,root) %{_bindir}/memflush
 %attr(755,root,root) %{_bindir}/memparse
 %attr(755,root,root) %{_bindir}/memping
 %attr(755,root,root) %{_bindir}/memrm
 %attr(755,root,root) %{_bindir}/memslap
 %attr(755,root,root) %{_bindir}/memstat
+%attr(755,root,root) %{_bindir}/memtouch
 %attr(755,root,root) %{_libdir}/libhashkit.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcached.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedprotocol.so.*.*.*
@@ -121,7 +126,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libmemcachedprotocol.la
 %{_libdir}/libmemcachedutil.la
 %{_includedir}/libhashkit
+%{_includedir}/libhashkit-*.*
 %{_includedir}/libmemcached
+%{_includedir}/libmemcached-*.*
+%{_includedir}/libmemcachedprotocol-*.*
+%{_includedir}/libmemcachedutil-*.*
 %{_pkgconfigdir}/libmemcached.pc
 %{_mandir}/man3/*.3*
 
