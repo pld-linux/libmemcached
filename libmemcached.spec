@@ -4,16 +4,16 @@
 #
 # Conditional build
 %bcond_without  static_libs	# don't build static library
-#
+
 Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
-Version:	1.0.4
-Release:	2
+Version:	1.0.16
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	6eded403ce736f6ac3c42c8f54dc88ae
+# Source0-md5:	1f3a7d559714791ac04ce8bcccc6b67e
 URL:		http://libmemcached.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -74,6 +74,7 @@ Statyczna biblioteka memcached.
 	LIBS="-lrt -lsasl -lpthread" \
 	%{?with_static_libs:--enable-static} \
 	--disable-silent-rules \
+	--enable-libmemcachedprotocol \
 	--with-memcached=no # disable memcached detection, we're not doing tests
 %{__make}
 
@@ -109,8 +110,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmemcached.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedprotocol.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedutil.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhashkit.so.1
-%attr(755,root,root) %ghost %{_libdir}/libmemcached.so.9
+%attr(755,root,root) %ghost %{_libdir}/libhashkit.so.2
+%attr(755,root,root) %ghost %{_libdir}/libmemcached.so.11
 %attr(755,root,root) %ghost %{_libdir}/libmemcachedprotocol.so.0
 %attr(755,root,root) %ghost %{_libdir}/libmemcachedutil.so.2
 %{_mandir}/man1/mem*.1*
@@ -126,12 +127,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libmemcachedprotocol.la
 %{_libdir}/libmemcachedutil.la
 %{_includedir}/libhashkit
-%{_includedir}/libhashkit-*.*
+%{_includedir}/libhashkit-1.0
 %{_includedir}/libmemcached
-%{_includedir}/libmemcached-*.*
-%{_includedir}/libmemcachedprotocol-*.*
-%{_includedir}/libmemcachedutil-*.*
+%{_includedir}/libmemcached-1.0
+%{_includedir}/libmemcachedprotocol-0.0
+%{_includedir}/libmemcachedutil-1.0
 %{_pkgconfigdir}/libmemcached.pc
+%{_aclocaldir}/ax_libmemcached.m4
 %{_mandir}/man3/*.3*
 
 %if %{with static_libs}
