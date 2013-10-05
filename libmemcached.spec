@@ -109,10 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmemcached.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedprotocol.so.*.*.*
 %attr(755,root,root) %{_libdir}/libmemcachedutil.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhashkit.so.?
-%attr(755,root,root) %ghost %{_libdir}/libmemcached.so.?
-%attr(755,root,root) %ghost %{_libdir}/libmemcachedprotocol.so.?
-%attr(755,root,root) %ghost %{_libdir}/libmemcachedutil.so.?
+%attr(755,root,root) %ghost %{_libdir}/libhashkit.so.1
+%attr(755,root,root) %ghost %{_libdir}/libmemcached.so.9
+%attr(755,root,root) %ghost %{_libdir}/libmemcachedprotocol.so.0
+%attr(755,root,root) %ghost %{_libdir}/libmemcachedutil.so.2
 %{_mandir}/man1/mem*.1*
 
 %files devel
