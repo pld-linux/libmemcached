@@ -1,0 +1,22 @@
+--- libmemcached-1.0.17/m4/ax_memcached.m4.orig	2013-04-03 06:22:00.000000000 +0200
++++ libmemcached-1.0.17/m4/ax_memcached.m4	2013-11-09 22:54:27.206037326 +0100
+@@ -54,5 +54,5 @@
+       ax_memcached_version=`$MEMCACHED_BINARY -h | sed 1q | awk '{print \$ 2 }' | sed 's|[\-a-z0-9]*$||' | awk -F. '{printf "%d.%d.%d", $[]1, $[]2, $[]3}'`
+       AC_MSG_RESULT([memcached version "$ax_memcached_version"])
+       AC_DEFINE_UNQUOTED([MEMCACHED_VERSION],"$ax_memcached_version",[Memcached binary version])
+-      ])
++      ],[AC_DEFINE([HAVE_MEMCACHED_BINARY], [0], [If Memcached binary is available])])
+     ])
+--- libmemcached-1.0.17/libtest/memcached.cc.orig	2013-04-03 06:22:00.000000000 +0200
++++ libmemcached-1.0.17/libtest/memcached.cc	2013-11-09 23:11:02.539328893 +0100
+@@ -58,6 +58,10 @@
+ #pragma GCC diagnostic ignored "-Wold-style-cast"
+ #endif
+ 
++#ifndef MEMCACHED_BINARY
++#define MEMCACHED_BINARY "memcached"
++#endif
++
+ namespace libtest {
+ 
+ class Memcached : public libtest::Server
