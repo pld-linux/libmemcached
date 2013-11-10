@@ -23,6 +23,7 @@ BuildRequires:	libevent-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	perl-tools-pod
+BuildRequires:	sed >= 4.0
 BuildRequires:	sphinx-pdg
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -66,6 +67,9 @@ Statyczna biblioteka memcached.
 %prep
 %setup -q
 %patch0 -p1
+
+# don't enable all posible sanitizers (conflicting with others)
+%{__sed} -i -e '/-fsanitize=/d' m4/ax_harden_compiler_flags.m4
 
 %build
 %{__libtoolize}
