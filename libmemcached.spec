@@ -8,13 +8,12 @@
 Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
-Version:	1.0.17
+Version:	1.0.18
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	d1a34be4d65b5e12dffcbb7763003056
-Patch0:		%{name}-memcached.patch
+Source0:	https://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	b3958716b4e53ddc5992e6c49d97e819
 URL:		http://libmemcached.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -23,7 +22,6 @@ BuildRequires:	libevent-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	perl-tools-pod
-BuildRequires:	sed >= 4.0
 BuildRequires:	sphinx-pdg
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -66,10 +64,6 @@ Statyczna biblioteka memcached.
 
 %prep
 %setup -q
-%patch0 -p1
-
-# don't enable all posible sanitizers (conflicting with others)
-%{__sed} -i -e '/-fsanitize=/d' m4/ax_harden_compiler_flags.m4
 
 %build
 %{__libtoolize}
@@ -85,7 +79,7 @@ Statyczna biblioteka memcached.
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static} \
 	--with-memcached=no # disable memcached detection, we're not doing tests
-#	LIBS="-lrt -lsasl -lpthread" 
+
 %{__make}
 
 %install
