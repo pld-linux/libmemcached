@@ -15,12 +15,9 @@ Group:		Libraries
 Source0:	https://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
 # Source0-md5:	b3958716b4e53ddc5992e6c49d97e819
 URL:		http://libmemcached.org/
-BuildRequires:	autoconf >= 2.63
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	libevent-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool >= 2:2.2
 BuildRequires:	perl-tools-pod
 BuildRequires:	sphinx-pdg
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -66,11 +63,6 @@ Statyczna biblioteka memcached.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 %configure \
 	PTHREAD_CFLAGS="-pthread" \
 	PTHREAD_LIBS="-lpthread" \
