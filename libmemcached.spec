@@ -9,7 +9,7 @@ Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
 Version:	1.0.18
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries
 Source0:	https://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
