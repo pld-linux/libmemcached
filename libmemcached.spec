@@ -9,11 +9,12 @@ Summary:	memcached client library
 Summary(pl.UTF-8):	Blblioteka kliencka memcached
 Name:		libmemcached
 Version:	1.0.18
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries
 Source0:	https://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
 # Source0-md5:	b3958716b4e53ddc5992e6c49d97e819
+Patch1:		pointer_comparison.patch
 URL:		http://libmemcached.org/
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	libevent-devel
@@ -61,6 +62,8 @@ Statyczna biblioteka memcached.
 
 %prep
 %setup -q
+
+%patch1 -p1
 
 %build
 %configure \
