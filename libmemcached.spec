@@ -15,7 +15,7 @@ Group:		Libraries
 Source0:	https://launchpad.net/libmemcached/1.0/%{version}/+download/%{name}-%{version}.tar.gz
 # Source0-md5:	b3958716b4e53ddc5992e6c49d97e819
 Patch1:		pointer_comparison.patch
-URL:		http://libmemcached.org/
+URL:		https://libmemcached.org/
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	libevent-devel
 BuildRequires:	libstdc++-devel
@@ -25,14 +25,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 libmemcached is a C and C++ client library to the memcached server
-(http://danga.com/memcached). It has been designed to be light on
-memory usage, thread safe, and provide full access to server side
+(http://memcached.org/). It has been designed to be light on memory
+usage, thread safe, and provide full access to server side
 methods.
 
 %description -l pl.UTF-8
 libmemcached to biblioteka kliencka serwera memcached
-(http://danga.com/memcached) dla języków C/C++. Została zaprojektowana
-z myślą o niewielkim zużyciu pamięci, bezpieczeństwe i pełnym dostępie
+(http://memcached.org/) dla języków C/C++. Została zaprojektowana z
+myślą o niewielkim zużyciu pamięci, bezpieczeństwe i pełnym dostępie
 do metod po stronie serwera.
 
 %package devel
@@ -73,7 +73,7 @@ Statyczna biblioteka memcached.
 	--enable-libmemcachedprotocol \
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static} \
-	--with-memcached=no # disable memcached detection, we're not doing tests
+	--without-memcached # disable memcached detection, we're not doing tests
 
 %{__make}
 
