@@ -63,7 +63,7 @@ Statyczna biblioteka memcached.
 %prep
 %setup -q
 
-%patch1 -p1
+%patch -P1 -p1
 
 %build
 %configure \
